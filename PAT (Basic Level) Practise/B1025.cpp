@@ -53,7 +53,6 @@ int main()
 	//调整每个节点的next地址；
 	for (iter = v1.begin(); iter != v1.end(); iter++) {
 		if (iter + 1 == v1.end()) {
-			continue;
 			Node &y = *iter;
 			y.next = -1;
 		}else{
@@ -68,7 +67,7 @@ int main()
 		if (iter + 1 < v1.end())
 			cout << setfill('0') << setw(5) << n.addr << ' ' << n.data << ' ' << setfill('0') << setw(5) << n.next << endl;
 		else {
-			cout << setfill('0') << setw(5) << n.addr << ' ' << n.data<< ' '<< -1 << endl;
+			cout << setfill('0') << setw(5) << n.addr << ' ' << n.data<< ' '<< n.next << endl;
 			 
 		}
 	}
