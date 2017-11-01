@@ -1,3 +1,4 @@
+/*The first version*/
 #include<iostream>
 #include<iomanip>
 #include<vector>
@@ -71,5 +72,57 @@ int main()
 			 
 		}
 	}
+	return 0;
+}
+
+
+/*The optimized version*/
+#include<iostream>
+#include<iomanip>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+struct Node {
+	int next;
+	int data;
+}node[100010];
+
+int main()
+{
+	int head, N, K;
+	vector<int> list;
+	int t_addr, t_data, t_next;
+
+	cin >> head >> N >> K;
+	if (head == -1) {
+		cout << -1 << endl;
+		return 0;
+	}
+	for (int i = 0; i < N; i++)
+	{
+		cin >> t_addr >> t_data >> t_next;
+		node[t_addr].data = t_data;
+		node[t_addr].next = t_next;
+	}
+	int size = 0;
+	int p = head;
+	while (head != -1)
+	{
+		list.push_back(head);
+
+		head = node[head].next;
+	}
+	size = list.size();
+	int i = 0;
+	while (i + K <= size)
+	{
+		reverse(&list[i], &list[i + K]);
+		i = i + K;
+	}
+
+	for (i = 0; i < size - 1; i++)
+		cout << setfill('0') << setw(5) << list[i] << ' ' << node[list[i]].data << ' ' << setfill('0') << setw(5) << list[i + 1] << endl;
+	cout << setfill('0') << setw(5) << list[i] << ' ' << node[list[i]].data << ' ' << "-1" << endl;
 	return 0;
 }
