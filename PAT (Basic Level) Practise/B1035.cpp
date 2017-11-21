@@ -27,12 +27,10 @@ int main()
 					flag = 1;
 			k *= 2;
 			for (i = 0; i<N / k; i++)
-				sort(A1 + i*k, A1 + (i + 1)*k);
-			for (i = k*(N / k); i<N; i++)     
-				sort(A1 + k*(N / k), A1 + N);
+				sort(A1 + i*k, A1 + (i + 1)*k);   
+			sort(A1 + k*(N / k), A1 + N);
 		}
 	}
-
 	for (i = 0; i < N-1; i++)
 		cout << A1[i] << ' ';
 	cout <<A1[N-1]<< endl;
